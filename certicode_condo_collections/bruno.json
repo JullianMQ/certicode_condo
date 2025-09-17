@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "certicode_condo_collections",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

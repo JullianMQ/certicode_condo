@@ -1,0 +1,15 @@
+meta {
+  name: Get Condo By ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{LocalApi}}/condos/5
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

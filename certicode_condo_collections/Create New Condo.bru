@@ -1,0 +1,43 @@
+meta {
+  name: Create New Condo
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{LocalApi}}/condos
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "condo_id": "CND-003",
+    "building_name": "Harbor View Residences",
+    "address": "789 Bay City, Pasay",
+    "developer": "Megaworld",
+    "unit_id": "UNIT-003",
+    "unit_type": "2BR",
+    "floor_area_sqm": 65.5,
+    "current_status": "Available",
+    "owner_id": null,
+    "listing_details": {
+      "price": 4800000,
+      "furnished": true,
+      "parking": true,
+      "amenities": [
+        "Pool",
+        "Gym",
+        "Playground"
+      ]
+    }
+  }
+}
+
+settings {
+  encodeUrl: false
+}
