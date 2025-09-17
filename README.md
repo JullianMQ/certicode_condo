@@ -1,10 +1,13 @@
 # Certicode Condo API
 
 ## GET STARTED
-Clone repository
+Clone repository and copy the .env.example to .env file
 ```bash
 cd certicode_condo
 pnpm install && pnpm build # or whatever package manager you prefer
+composer install # dependencies for laravel
+php artisan migrate # incase of database exception
+php artisan key:generate # incase of missing app key
 composer dev # at localhost:8000
 ```
 
