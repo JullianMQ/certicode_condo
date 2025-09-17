@@ -22,4 +22,9 @@ class Condo extends Model
     protected $casts = [
         'listing_details' => 'array', // auto-cast JSON into array
     ];
+    
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
 }
