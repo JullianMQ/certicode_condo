@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GeminiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CondoController;
@@ -32,3 +33,4 @@ Route::apiResource('bookings', BookingController::class);
 Route::apiResource('amenities', AmenityController::class);
 
 
+Route::post('/ask', [GeminiController::class, 'ask']);
