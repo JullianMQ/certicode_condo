@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GeminiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Condo;
@@ -54,3 +55,4 @@ Route::post('/condos', function (Request $request) {
     return response()->json($condo, 201);
 });
 
+Route::post('/ask', [GeminiController::class, 'ask']);
