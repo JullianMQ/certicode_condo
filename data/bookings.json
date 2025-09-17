@@ -1,0 +1,62 @@
+[
+  {
+    "booking_id": "B-001",
+    "user_id": "U-101",
+    "amenity_id": "A-001",
+    "booking_date": "2025-10-01",
+    "start_time": "14:00",
+    "end_time": "16:00",
+    "status": "Confirmed",
+    "total_fee_php": 3000,
+    "created_at": "2025-09-24T10:30:00Z",
+    "purpose": "Birthday Party"
+  },
+  {
+    "booking_id": "B-002",
+    "user_id": "U-102",
+    "amenity_id": "A-004",
+    "booking_date": "2025-10-05",
+    "start_time": "10:00",
+    "end_time": "11:00",
+    "status": "Pending",
+    "total_fee_php": 500,
+    "created_at": "2025-09-25T15:45:00Z",
+    "purpose": "Basketball Practice"
+  },
+  {
+    "booking_id": "B-003",
+    "user_id": "U-103",
+    "amenity_id": "A-005",
+    "booking_date": "2025-09-28",
+    "start_time": "07:00",
+    "end_time": "08:00",
+    "status": "Confirmed",
+    "total_fee_php": 800,
+    "created_at": "2025-09-21T09:15:00Z",
+    "purpose": "Tennis Match"
+  },
+  {
+    "booking_id": "B-004",
+    "user_id": "U-101",
+    "amenity_id": "A-006",
+    "booking_date": "2025-10-12",
+    "start_time": "16:00",
+    "end_time": "18:00",
+    "status": "Pending",
+    "total_fee_php": 2000,
+    "created_at": "2025-09-26T14:20:00Z",
+    "purpose": "Family Gathering"
+  },
+  {
+    "booking_id": "B-005",
+    "user_id": "U-102",
+    "amenity_id": "A-001",
+    "booking_date": "2025-09-30",
+    "start_time": "19:00",
+    "end_time": "21:00",
+    "status": "Cancelled",
+    "total_fee_php": 0,
+    "created_at": "2025-09-23T11:00:00Z",
+    "purpose": "Company Meeting"
+  }
+]
