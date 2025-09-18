@@ -16,15 +16,15 @@ class Gemini
         ]);
     }
 
-    public function generateText($prompt, $model = 'gemini-2.5-flash-lite')
+    public function generateText($prompt, $model = 'gemini-2.5-flash')
     {
         $url = $this->baseUrl . $model . ':generateContent?key=' . env('GEMINI_API_KEY');
 
         $dataFiles = [
-            storage_path('app/data/condos.json'),
-            storage_path('app/data/bookings.json'),
-            storage_path('app/data/maintenance.json'),
-            storage_path('app/data/amenities.json'),
+            storage_path('/data/condos.json'),
+            storage_path('/data/bookings.json'),
+            storage_path('/data/maintenance.json'),
+            storage_path('/data/amenities.json'),
         ];
 
         $contextData = '';
@@ -35,12 +35,14 @@ class Gemini
             }
         }
 
-
         $systemInstruction = "You are a property management assistant.
-        Only answer questions related to property management or based on the provided data.
+        Only answer questions related to property management, based on the provided data.
         If the question is unrelated, reply with: 'I can only help with property management topics.'
 
         Here is the property data you must use:\n\n{$contextData}
+        Answer questions about condominiums, bookings, maintenance, and amenities. For payment and
+        information about tenants, just say: 'I cannot answer private questions about tenants or
+        payments.'
 
         Question: {$prompt}";
 
