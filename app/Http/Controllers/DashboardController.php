@@ -55,16 +55,17 @@ class DashboardController extends Controller
             // Transform maintenance data
             $maintenance = array_map(function($item) {
                 return [
-                    'id' => $item['maintenance_id'] ?? null,
+                    'id' => $item['request_id'] ?? null,
                     'title' => $item['title'] ?? 'Maintenance Request',
                     'description' => $item['description'] ?? 'No description provided',
                     'unit_id' => $item['unit_id'] ?? 'N/A',
-                    'reported_by' => $item['reported_by'] ?? 'Unknown',
-                    'reported_date' => $item['reported_date'] ?? now()->format('Y-m-d'),
-                    'status' => $item['status'] ?? 'Pending',
-                    'priority' => $item['priority'] ?? 'Medium',
-                    'assigned_to' => $item['assigned_to'] ?? 'Unassigned',
-                    'completed_date' => $item['completed_date'] ?? null
+                    'category' => $item['category'] ?? 'General',
+                    'status' => $item['status'] ?? 'Submitted',
+                    'urgency' => $item['urgency'] ?? 'Medium',
+                    'user_id' => $item['user_id'] ?? null,
+                    'assigned_to_user_id' => $item['assigned_to_user_id'] ?? null,
+                    'submitted_at' => $item['submitted_at'] ?? null,
+                    'resolved_at' => $item['resolved_at'] ?? null
                 ];
             }, $maintenance);
 
