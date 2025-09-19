@@ -13,15 +13,9 @@ class CondoController extends Controller
         return response()->json(Condo::all());
     }
 
-    // GET /condos/{id}
-    public function show($id)
+    // GET /condos/{condo}
+    public function show(Condo $condo)
     {
-        $condo = Condo::find($id);
-
-        if (!$condo) {
-            return response()->json(['error' => 'Condo not found'], 404);
-        }
-
         return response()->json($condo);
     }
 
@@ -29,11 +23,11 @@ class CondoController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'condo_id' => 'required|string',
+            'condo_id' => 'required|string|unique:condos,condo_id',
             'building_name' => 'required|string',
             'address' => 'required|string',
             'developer' => 'required|string',
-            'unit_id' => 'required|string',
+            'unit_id' => 'required|string|unique:condos,unit_id',
             'unit_type' => 'required|string',
             'floor_area_sqm' => 'required|numeric',
             'current_status' => 'required|string',
@@ -41,28 +35,14 @@ class CondoController extends Controller
             'listing_details' => 'required|array',
         ]);
 
-        if (
-            Condo::where('condo_id', $validated['condo_id'])->exists() ||
-            Condo::where('unit_id', $validated['unit_id'])->exists()
-        ) {
-            return response()->json([
-                'error' => 'Data already exists'
-            ], 409);
-        }
-
         $condo = Condo::create($validated);
 
         return response()->json($condo, 201);
     }
-    // PUT or PATCH /condos/{id}
-    public function update(Request $request, $id)
+
+    // PUT or PATCH /condos/{condo}
+    public function update(Request $request, Condo $condo)
     {
-        $condo = Condo::find($id);
-
-        if (!$condo) {
-            return response()->json(['error' => 'Condo not found'], 404);
-        }
-
         $validated = $request->validate([
             'building_name' => 'sometimes|string',
             'address' => 'sometimes|string',
@@ -79,18 +59,11 @@ class CondoController extends Controller
         return response()->json($condo);
     }
 
-    // DELETE /condos/{id}
-    public function destroy($id)
+    // DELETE /condos/{condo}
+    public function destroy(Condo $condo)
     {
-        $condo = Condo::find($id);
-
-        if (!$condo) {
-            return response()->json(['error' => 'Condo not found'], 404);
-        }
-
         $condo->delete();
 
         return response()->json(['message' => 'Condo deleted']);
     }
-
 }
