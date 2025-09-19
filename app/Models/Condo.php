@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Condo extends Model
 {
+    protected $primaryKey = 'condo_id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
         'condo_id',
         'building_name',
@@ -20,11 +24,17 @@ class Condo extends Model
     ];
 
     protected $casts = [
-        'listing_details' => 'array', // auto-cast JSON into array
+        'listing_details' => 'array',
     ];
-    
+
     public function owner()
     {
         return $this->belongsTo(User::class, 'owner_id');
     }
+
+    public function amenities()
+    {
+        return $this->hasMany(Amenity::class, 'building_name', 'building_name');
+    }
+
 }
