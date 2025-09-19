@@ -1,0 +1,90 @@
+[
+  {
+    "user_id": "U-101",
+    "name": "Maria Santos",
+    "email": "maria.santos@email.com",
+    "role": "Resident",
+    "unit_id": "U-1805",
+    "phone": "+63917-123-4567",
+    "avatar": "maria-santos.png",
+    "status": "Active",
+    "move_in_date": "2023-05-15"
+  },
+  {
+    "user_id": "U-102",
+    "name": "John Dela Cruz",
+    "email": "john.delacruz@email.com",
+    "role": "Resident",
+    "unit_id": "U-35B",
+    "phone": "+63918-987-6543",
+    "avatar": "john-delacruz.png",
+    "status": "Active",
+    "move_in_date": "2022-11-20"
+  },
+  {
+    "user_id": "U-103",
+    "name": "Ana Reyes",
+    "email": "ana.reyes@email.com",
+    "role": "Resident",
+    "unit_id": "U-25C",
+    "phone": "+63919-456-7890",
+    "avatar": "ana-reyes.png",
+    "status": "Active",
+    "move_in_date": "2024-01-10"
+  },
+  {
+    "user_id": "U-201",
+    "name": "Carlos Rodriguez",
+    "email": "carlos.rodriguez@building.com",
+    "role": "Property Manager",
+    "unit_id": null,
+    "phone": "+63920-111-2222",
+    "avatar": "carlos-rodriguez.png",
+    "status": "Active",
+    "hire_date": "2021-03-01"
+  },
+  {
+    "user_id": "U-301",
+    "name": "Roberto Maintenance",
+    "email": "roberto.m@building.com",
+    "role": "Maintenance Staff",
+    "unit_id": null,
+    "phone": "+63919-555-0123",
+    "avatar": "roberto-maintenance.png",
+    "status": "Active",
+    "hire_date": "2022-07-15"
+  },
+  {
+    "user_id": "U-302",
+    "name": "Linda Pest Control",
+    "email": "linda.pc@services.com",
+    "role": "Service Provider",
+    "unit_id": null,
+    "phone": "+63920-444-0456",
+    "avatar": "linda-pestcontrol.png",
+    "status": "Active",
+    "contract_start": "2023-01-01"
+  },
+  {
+    "user_id": "U-401",
+    "name": "Security Guard Jose",
+    "email": "jose.security@building.com",
+    "role": "Security",
+    "unit_id": null,
+    "phone": "+63921-777-8888",
+    "avatar": "jose-security.png",
+    "status": "Active",
+    "hire_date": "2020-09-10"
+  },
+  {
+    "user_id": "U-501",
+    "name": "Admin Sarah",
+    "email": "sarah.admin@building.com",
+    "role": "Admin",
+    "unit_id": null,
+    "phone": "+63922-999-0000",
+    "avatar": "sarah-admin.png",
+    "status": "Active",
+    "hire_date": "2019-12-01"
+  }
+]
