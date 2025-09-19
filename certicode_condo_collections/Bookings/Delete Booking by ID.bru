@@ -1,0 +1,19 @@
+meta {
+  name: Delete Booking by ID
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{LocalApi}}/bookings/1
+  body: json
+  auth: inherit
+}
+
+headers {
+  : 
+}
+
+settings {
+  encodeUrl: true
+}

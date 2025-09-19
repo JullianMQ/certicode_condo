@@ -3,7 +3,11 @@
 use App\Http\Controllers\GeminiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Condo;
+use App\Http\Controllers\CondoController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\AmenityController;
+
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -19,40 +23,14 @@ Route::get('/test', function () {
     ]);
 });
 
-Route::get('/condos', function () {
-    return response()->json(Condo::all());
-});
+//condos
+Route::apiResource('condos', CondoController::class);
 
-Route::get('/condos/{id}', function ($id) {
-    return response()->json(Condo::find($id));
-});
+//bookings
+Route::apiResource('bookings', BookingController::class);
 
-Route::post('/condos', function (Request $request) {
-    $validated = $request->validate([
-        'condo_id'        => 'required|string',
-        'building_name'   => 'required|string',
-        'address'         => 'required|string',
-        'developer'       => 'required|string',
-        'unit_id'         => 'required|string',
-        'unit_type'       => 'required|string',
-        'floor_area_sqm'  => 'required|numeric',
-        'current_status'  => 'required|string',
-        'owner_id'        => 'nullable|string',
-        'listing_details' => 'required|array',
-    ]);
+//amenities
+Route::apiResource('amenities', AmenityController::class);
 
-    if (
-        Condo::where('condo_id', $validated['condo_id'])->exists() ||
-        Condo::where('unit_id', $validated['unit_id'])->exists()
-    ) {
-        return response()->json([
-            'error' => 'Data already exists'
-        ], 409);
-    }
-
-    $condo = Condo::create($validated);
-
-    return response()->json($condo, 201);
-});
 
 Route::post('/ask', [GeminiController::class, 'ask']);

@@ -1,0 +1,25 @@
+meta {
+  name: Update Booking by ID
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{LocalApi}}/bookings/1
+  body: json
+  auth: inherit
+}
+
+headers {
+  : 
+}
+
+body:json {
+  {
+    "purpose": "Birthday Party"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

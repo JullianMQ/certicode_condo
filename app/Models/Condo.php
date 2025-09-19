@@ -20,6 +20,17 @@ class Condo extends Model
     ];
 
     protected $casts = [
-        'listing_details' => 'array', // auto-cast JSON into array
+        'listing_details' => 'array',
     ];
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    public function amenities()
+    {
+        return $this->hasMany(Amenity::class, 'building_name', 'building_name');
+    }
+
 }

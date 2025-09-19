@@ -1,0 +1,15 @@
+meta {
+  name: Get All Amenities
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{LocalApi}}/amenities
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

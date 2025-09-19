@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+    public function condos()
+    {
+        return $this->hasMany(Condo::class, 'owner_id');
+    }
 }
