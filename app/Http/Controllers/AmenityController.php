@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AmenityResource;
 use App\Models\Amenity;
 use Illuminate\Http\Request;
 
@@ -11,14 +12,15 @@ class AmenityController extends Controller
     public function index()
     {
         // Fetch all amenities with bookings
-        return Amenity::with('bookings')->get();
+        $amenities = Amenity::all();
+        return AmenityResource::collection($amenities);
     }
 
     // GET /api/amenities/{id}
     public function show($id)
     {
         $amenity = Amenity::with('bookings')->findOrFail($id);
-        return response()->json($amenity);
+        return new AmenityResource($amenity);
     }
 
     // POST /api/amenities
@@ -31,7 +33,8 @@ class AmenityController extends Controller
             'capacity' => 'required|integer',
             'is_bookable' => 'boolean',
             'fee_per_hour_php' => 'nullable|integer',
-            'operating_hours' => 'nullable|string',
+            'start_hours' => 'required|date_format:H:i',
+            'end_hours' => 'required|date_format:H:i|after:start_hours',
             'advance_booking_days' => 'nullable|integer',
         ]);
 
@@ -51,7 +54,8 @@ class AmenityController extends Controller
             'capacity' => 'sometimes|required|integer',
             'is_bookable' => 'boolean',
             'fee_per_hour_php' => 'nullable|integer',
-            'operating_hours' => 'nullable|string',
+            'start_hours' => 'nullable|date_format:H:i',
+            'end_hours' => 'nullable|date_format:H:i|after:start_hours',
             'advance_booking_days' => 'nullable|integer',
         ]);
 

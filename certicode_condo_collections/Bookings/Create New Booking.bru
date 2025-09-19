@@ -1,0 +1,29 @@
+meta {
+  name: Create New Booking
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{LocalApi}}/bookings
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "booking_id": "B-006",
+    "user_id": "U-103",
+    "amenity_id": "A-002",
+    "booking_date": "2025-10-01T00:00:00.000000Z",
+    "start_time": "14:00",
+    "end_time": "16:00",
+    "status": "Confirmed",
+    "total_fee_php": 5000,
+    "purpose": "Christmas Party"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

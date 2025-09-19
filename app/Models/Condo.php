@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Condo extends Model
 {
-    protected $primaryKey = 'condo_id';
-    public $incrementing = false;
-    protected $keyType = 'string';
-
     protected $fillable = [
         'condo_id',
         'building_name',

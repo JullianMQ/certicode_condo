@@ -1,0 +1,89 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Amenity;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class AmenitySeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $amenities = [
+            [
+                'amenity_id' => 'A-001',
+                'name' => 'Function Room Alpha',
+                'building_name' => 'The Radiance Manila Bay',
+                'capacity' => 50,
+                'is_bookable' => true,
+                'fee_per_hour_php' => 1500,
+                'start_hours' => '08:00',
+                'end_hours' => '22:00',
+                'advance_booking_days' => 7,
+            ],
+            [
+                'amenity_id' => 'A-002',
+                'name' => 'Swimming Pool',
+                'building_name' => 'SMDC Light Residences',
+                'capacity' => 30,
+                'is_bookable' => false,
+                'fee_per_hour_php' => 0,
+                'start_hours' => '06:00',
+                'end_hours' => '22:00',
+                'advance_booking_days' => 0,
+            ],
+            [
+                'amenity_id' => 'A-003',
+                'name' => 'Gym',
+                'building_name' => 'One Serendra',
+                'capacity' => 20,
+                'is_bookable' => false,
+                'fee_per_hour_php' => 0,
+                'start_hours' => '05:00',
+                'end_hours' => '23:00',
+                'advance_booking_days' => 0,
+            ],
+            [
+                'amenity_id' => 'A-004',
+                'name' => 'Basketball Court',
+                'building_name' => 'One Serendra',
+                'capacity' => 10,
+                'is_bookable' => true,
+                'fee_per_hour_php' => 500,
+                'start_hours' => '06:00',
+                'end_hours' => '21:00',
+                'advance_booking_days' => 3,
+            ],
+            [
+                'amenity_id' => 'A-005',
+                'name' => 'Tennis Court',
+                'building_name' => 'One Serendra',
+                'capacity' => 4,
+                'is_bookable' => true,
+                'fee_per_hour_php' => 800,
+                'start_hours' => '06:00',
+                'end_hours' => '20:00',
+                'advance_booking_days' => 5,
+            ],
+            [
+                'amenity_id' => 'A-006',
+                'name' => 'Rooftop Garden',
+                'building_name' => 'The Radiance Manila Bay',
+                'capacity' => 25,
+                'is_bookable' => true,
+                'fee_per_hour_php' => 1000,
+                'start_hours' => '07:00',
+                'end_hours' => '19:00',
+                'advance_booking_days' => 14,
+            ],
+        ];
+
+        foreach ($amenities as $amenity) {
+            Amenity::create($amenity);
+        }
+    }
+}

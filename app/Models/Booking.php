@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $primaryKey = 'booking_id';
-    public $incrementing = false; 
-    protected $keyType = 'string';
-
     protected $fillable = [
         'booking_id',
         'user_id',

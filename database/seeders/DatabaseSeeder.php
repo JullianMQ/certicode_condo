@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CondoSeeder::class,
+            BookingSeeder::class,
+            AmenitySeeder::class,
         ]);
     }
 }
