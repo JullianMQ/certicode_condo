@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             CondoSeeder::class,
             BookingSeeder::class,
             AmenitySeeder::class,
+            MaintenanceSeeder::class,
         ]);
     }
 }
