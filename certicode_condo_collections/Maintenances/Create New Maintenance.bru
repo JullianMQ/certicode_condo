@@ -1,0 +1,15 @@
+meta {
+  name: Create New Maintenance
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{LocalApi}}/maintenances
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
