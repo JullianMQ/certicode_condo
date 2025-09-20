@@ -347,8 +347,6 @@
                         </svg>
                     </div>
                     <div class="text-sm text-gray-500 mt-1">
-                        {{ round((count(array_filter($condos, fn($condo) => $condo['status'] === 'Occupied')) / count($condos)) * 100, 1) }}% Occupancy Rate
-                    </div>
                 </div>
             </div>
 

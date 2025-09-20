@@ -1,0 +1,29 @@
+meta {
+  name: Create New Amenity
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{LocalApi}}/amenities
+  body: json
+  auth: inherit
+}
+
+body:json {
+   {
+        "amenity_id": "A-007",
+        "name": "Underground Garden",
+        "building_name": "The Manila Underground City",
+        "capacity": 25,
+        "is_bookable": true,
+        "fee_per_hour_php": 1000,
+        "start_hours": "07:00",
+        "end_hours": "19:00",
+        "advance_booking_days": 14
+      }
+}
+
+settings {
+  encodeUrl: true
+}
