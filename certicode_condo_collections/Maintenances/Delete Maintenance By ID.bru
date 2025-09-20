@@ -1,0 +1,15 @@
+meta {
+  name: Delete Maintenance By ID
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{LocalApi}}/maintenances/8
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

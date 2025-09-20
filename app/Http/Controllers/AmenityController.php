@@ -70,6 +70,6 @@ class AmenityController extends Controller
         $amenity = Amenity::findOrFail($id);
         $amenity->delete();
 
-        return response()->json(null, 204);
+        return response()->json(['message' => 'Amenity deleted']);
     }
 }

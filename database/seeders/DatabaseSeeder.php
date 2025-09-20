@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             BookingSeeder::class,
             AmenitySeeder::class,
             MaintenanceSeeder::class,
+            PaymentSeeder::class
         ]);
     }
 }

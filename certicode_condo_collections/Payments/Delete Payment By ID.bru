@@ -1,0 +1,15 @@
+meta {
+  name: Delete Payment By ID
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{LocalApi}}/payments/7
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

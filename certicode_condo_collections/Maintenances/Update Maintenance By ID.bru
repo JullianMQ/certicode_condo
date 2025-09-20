@@ -1,0 +1,21 @@
+meta {
+  name: Update Maintenance By ID
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{LocalApi}}/maintenances/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "status": "Resolved"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

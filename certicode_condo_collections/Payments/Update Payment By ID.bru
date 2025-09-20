@@ -1,0 +1,22 @@
+meta {
+  name: Update Payment By ID
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{LocalApi}}/payments/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "amount_php": 10500.00
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

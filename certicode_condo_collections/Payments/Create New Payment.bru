@@ -1,0 +1,30 @@
+meta {
+  name: Create New Payment
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{LocalApi}}/payments
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "payment_id": "P-007",
+    "user_id": "U-104",
+    "unit_id": "U-50D",
+    "payment_type": "Monthly Dues",
+    "amount_php": 4200,
+    "due_date": "2025-10-05",
+    "status": "Pending",
+    "paid_at": null,
+    "receipt_number": null
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
