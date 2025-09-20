@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CondoController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AmenityController;
+use App\Http\Controllers\MaintenanceController;
 
 
 
@@ -32,5 +33,7 @@ Route::apiResource('bookings', BookingController::class);
 //amenities
 Route::apiResource('amenities', AmenityController::class);
 
+//maintenances
+Route::apiResource('maintenances', MaintenanceController::class);
 
-Route::post('/ask', [GeminiController::class, 'ask']);
+Route::post('/ask', action: [GeminiController::class, 'ask']);
