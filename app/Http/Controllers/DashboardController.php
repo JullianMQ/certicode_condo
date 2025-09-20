@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -14,7 +15,7 @@ class DashboardController extends Controller
             $condos = $this->loadJsonData('condos.json');
             $bookings = $this->loadJsonData('bookings.json');
             $maintenance = $this->loadJsonData('maintenance.json');
-            
+
             // Transform condos data to match view expectations
             $condos = array_map(function($condo) {
                 return [
@@ -70,11 +71,11 @@ class DashboardController extends Controller
             }, $maintenance);
 
             return view('dashboard', compact('condos', 'bookings', 'maintenance', 'users', 'amenities', 'payments'));
-            
+
         } catch (\Exception $e) {
             // Log the error and return a safe default
-            \Log::error('Dashboard data loading error: ' . $e->getMessage());
-            
+            Log::error('Dashboard data loading error: ' . $e->getMessage());
+
             // Return empty arrays to prevent view errors
             return view('dashboard', [
                 'condos' => [],
@@ -92,14 +93,14 @@ class DashboardController extends Controller
      */
     private function loadJsonData($filename)
     {
-        $path = base_path("data/{$filename}");
-        
+        $path = base_path("storage/data/{$filename}");
+
         if (!File::exists($path)) {
             return [];
         }
-        
+
         $data = json_decode(File::get($path), true);
-        
+
         return is_array($data) ? $data : [];
     }
 }

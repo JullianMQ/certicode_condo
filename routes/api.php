@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CondoController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AmenityController;
+use App\Http\Controllers\MaintenanceController;
 
 
 
@@ -24,13 +25,33 @@ Route::get('/test', function () {
 });
 
 //condos
-Route::apiResource('condos', CondoController::class);
+Route::apiResource('condos', CondoController::class)->names([
+    'index' => 'api.bookings.index',
+    'store' => 'api.bookings.store',
+    'show' => 'api.bookings.show',
+    'update' => 'api.bookings.update',
+    'destroy' => 'api.bookings.destroy',
+]);
 
 //bookings
-Route::apiResource('bookings', BookingController::class);
+Route::apiResource('bookings', BookingController::class)->names([
+    'index' => 'api.bookings.index',
+    'store' => 'api.bookings.store',
+    'show' => 'api.bookings.show',
+    'update' => 'api.bookings.update',
+    'destroy' => 'api.bookings.destroy',
+]);
 
 //amenities
-Route::apiResource('amenities', AmenityController::class);
+Route::apiResource('amenities', AmenityController::class)->names([
+    'index' => 'api.bookings.index',
+    'store' => 'api.bookings.store',
+    'show' => 'api.bookings.show',
+    'update' => 'api.bookings.update',
+    'destroy' => 'api.bookings.destroy',
+]);
 
+//maintenances
+Route::apiResource('maintenances', MaintenanceController::class);
 
-Route::post('/ask', [GeminiController::class, 'ask']);
+Route::post('/ask', action: [GeminiController::class, 'ask']);
