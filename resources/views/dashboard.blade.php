@@ -14,14 +14,14 @@
             'resolved' => count(array_filter($maintenance, fn($m) => $m['status'] === 'Resolved')),
             'total' => count($maintenance)
         ];
-        
+
         // Calculate efficiency metrics
         $resolvedPercentage = $maintenanceStats['total'] > 0 ? round(($maintenanceStats['resolved'] / $maintenanceStats['total']) * 100, 1) : 0;
         $activeRequests = $maintenanceStats['submitted'] + $maintenanceStats['assigned'] + $maintenanceStats['in_progress'];
-        
+
         // Generate daily data based on actual maintenance submission dates
         $dailyData = [];
-        
+
         // Group requests by submission date
         $requestsByDate = [];
         foreach ($maintenance as $request) {
@@ -31,16 +31,16 @@
             }
             $requestsByDate[$date][] = $request;
         }
-        
+
         // Create chart data for the actual dates with data
         $dates = ['2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16'];
-        
+
         foreach ($dates as $date) {
             $dayRequests = $requestsByDate[$date] ?? [];
             $dayResolved = array_filter($dayRequests, function($request) {
                 return $request['status'] === 'Resolved';
             });
-            
+
             $carbonDate = \Carbon\Carbon::parse($date);
             $dailyData[] = [
                 'week' => $carbonDate->format('M j'),
@@ -50,7 +50,7 @@
                 'dayName' => $carbonDate->format('D')
             ];
         }
-        
+
         // Add empty days to make 7 total for better chart layout
         while (count($dailyData) < 7) {
             $dailyData[] = [
@@ -61,7 +61,7 @@
                 'dayName' => ''
             ];
         }
-        
+
         $weeklyData = $dailyData;
     @endphp
 
@@ -88,7 +88,7 @@
                     $maxRequests = max(array_column($weeklyData, 'requests'));
                     $chartScale = max($maxRequests, 4); // Use actual max or 4, whichever is higher
                 @endphp
-                
+
                 {{-- Mobile: Horizontal scroll, Desktop: Full width --}}
                 <div class="overflow-x-auto pb-2">
                     <div class="flex items-end justify-between h-40 sm:h-48 lg:h-64 mb-4 min-w-80 sm:min-w-0 px-2 sm:px-4">
@@ -102,21 +102,21 @@
                                             <br>{{ $data['date'] }}
                                         @endif
                                     </div>
-                                    
+
                                     @if($data['requests'] > 0)
                                         {{-- Always show a container for the bar --}}
                                         <div class="w-full h-full flex flex-col justify-end">
                                             {{-- Resolved requests bar (dark cyan) --}}
                                             @if($data['resolved'] > 0)
-                                                <div class="bg-cyan-500 transition-all duration-300 hover:bg-cyan-600 cursor-pointer {{ ($data['requests'] - $data['resolved']) > 0 ? 'rounded-t-lg' : 'rounded-lg' }}" 
+                                                <div class="bg-cyan-500 transition-all duration-300 hover:bg-cyan-600 cursor-pointer {{ ($data['requests'] - $data['resolved']) > 0 ? 'rounded-t-lg' : 'rounded-lg' }}"
                                                      style="height: {{ max(($data['resolved'] / $chartScale) * 120, 15) }}px; min-height: 15px;"
                                                      title="Resolved: {{ $data['resolved'] }}">
                                                 </div>
                                             @endif
-                                            
+
                                             {{-- Pending requests bar (light cyan) --}}
                                             @if(($data['requests'] - $data['resolved']) > 0)
-                                                <div class="bg-cyan-200 transition-all duration-300 hover:bg-cyan-300 cursor-pointer {{ $data['resolved'] > 0 ? 'rounded-b-lg' : 'rounded-lg' }}" 
+                                                <div class="bg-cyan-200 transition-all duration-300 hover:bg-cyan-300 cursor-pointer {{ $data['resolved'] > 0 ? 'rounded-b-lg' : 'rounded-lg' }}"
                                                      style="height: {{ max((($data['requests'] - $data['resolved']) / $chartScale) * 120, 15) }}px; min-height: 15px;"
                                                      title="Pending: {{ $data['requests'] - $data['resolved'] }}">
                                                 </div>
@@ -124,7 +124,7 @@
                                         </div>
                                     @else
                                         {{-- Empty state bar --}}
-                                        <div class="bg-gray-100 rounded-lg border-2 border-dashed border-gray-300" 
+                                        <div class="bg-gray-100 rounded-lg border-2 border-dashed border-gray-300"
                                              style="height: 8px"
                                              title="No requests this day">
                                         </div>
@@ -259,7 +259,7 @@
                 <h3 class="text-lg font-bold text-gray-900">Equipment Issues</h3>
                 <span class="text-sm text-gray-500">This Month</span>
             </div>
-            
+
             @php
                 $equipmentIssues = [
                     ['name' => 'Elevators', 'count' => 3, 'color' => 'bg-red-500', 'category' => 'Building Amenities'],
@@ -269,7 +269,7 @@
                 ];
                 $totalIssues = array_sum(array_column($equipmentIssues, 'count'));
             @endphp
-            
+
             <div class="space-y-3">
                 @foreach($equipmentIssues as $equipment)
                     <div class="flex items-center justify-between">
@@ -280,7 +280,7 @@
                         <div class="flex items-center">
                             <span class="text-sm font-bold text-gray-900 mr-2">{{ $equipment['count'] }}</span>
                             <div class="w-20 bg-gray-200 rounded-full h-2">
-                                <div class="{{ $equipment['color'] }} h-2 rounded-full" 
+                                <div class="{{ $equipment['color'] }} h-2 rounded-full"
                                      style="width: {{ $totalIssues > 0 ? ($equipment['count'] / $totalIssues) * 100 : 0 }}%"></div>
                             </div>
                         </div>
@@ -295,7 +295,7 @@
                 <h3 class="text-lg font-bold text-gray-900">Resolution Times</h3>
                 <span class="text-sm text-green-500 font-medium">↓ 15% faster</span>
             </div>
-            
+
             @php
                 $resolutionTimes = [
                     ['category' => 'Plumbing', 'avgDays' => 1.5, 'trend' => 'down'],
@@ -304,7 +304,7 @@
                     ['category' => 'Elevators', 'avgDays' => 4.8, 'trend' => 'down']
                 ];
             @endphp
-            
+
             <div class="space-y-4">
                 @foreach($resolutionTimes as $category)
                     <div class="flex items-center justify-between">
@@ -403,7 +403,7 @@
                     View all →
                 </a>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {{-- Recent Bookings List --}}
                 <div>

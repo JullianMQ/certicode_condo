@@ -25,13 +25,31 @@ Route::get('/test', function () {
 });
 
 //condos
-Route::apiResource('condos', CondoController::class);
+Route::apiResource('condos', CondoController::class)->names([
+    'index' => 'api.bookings.index',
+    'store' => 'api.bookings.store',
+    'show' => 'api.bookings.show',
+    'update' => 'api.bookings.update',
+    'destroy' => 'api.bookings.destroy',
+]);
 
 //bookings
-Route::apiResource('bookings', BookingController::class);
+Route::apiResource('bookings', BookingController::class)->names([
+    'index' => 'api.bookings.index',
+    'store' => 'api.bookings.store',
+    'show' => 'api.bookings.show',
+    'update' => 'api.bookings.update',
+    'destroy' => 'api.bookings.destroy',
+]);
 
 //amenities
-Route::apiResource('amenities', AmenityController::class);
+Route::apiResource('amenities', AmenityController::class)->names([
+    'index' => 'api.bookings.index',
+    'store' => 'api.bookings.store',
+    'show' => 'api.bookings.show',
+    'update' => 'api.bookings.update',
+    'destroy' => 'api.bookings.destroy',
+]);
 
 //maintenances
 Route::apiResource('maintenances', MaintenanceController::class);
